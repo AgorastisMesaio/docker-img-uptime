@@ -1,8 +1,8 @@
-# Adminer docker container
+# Uptime Kuma docker container
 
 ![GitHub action workflow status](https://github.com/AgorastisMesaio/docker-img-uptime/actions/workflows/docker-publish.yml/badge.svg)
 
-This repository contains a `Dockerfile` aimed to create a *base image* to provide a dockerized easy-to-use self-hosted monitoring tool. It's based on the great project uptime kuma.
+This repository contains a `Dockerfile` aimed to create a *base image* to provide a dockerized easy-to-use self-hosted monitoring tool. It's based on the great project [Uptime Kuma](https://github.com/louislam/uptime-kuma).
 
 - Start your services
 
