@@ -11,3 +11,7 @@ Thumbs.db
 # DrawIO temporary files
 *.dtmp
 *.bkp
+
+# Ignore the data directory
+/data
+

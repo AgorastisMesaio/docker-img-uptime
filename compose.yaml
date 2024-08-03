@@ -9,6 +9,8 @@ services:
       - 3001:3001
     volumes:
       - ./data:/app/data
+      - ./config:/config
+      - /var/run/docker.sock:/var/run/docker.sock
     container_name: uptime-kuma
 volumes:
   uptime-kuma: {}

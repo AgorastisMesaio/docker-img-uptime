@@ -1,18 +1,15 @@
-# Dockerfile for Upitime Kuma image
+# Dockerfile for customized Uptime Kuma
 #
 # This Dockerfile sets up a the uptime container that you can use
 # inside your docker compose projects or standalone.
 #
-# I'm implementing Auto Login capability so it's easier
-# for developers working on DB's
-#
 FROM louislam/uptime-kuma
 
 RUN apt-get update \
-    && apt-get install -y default-mysql-client nano
+    && apt-get install -y default-mysql-client nano procps
 
 # Needed for our custom nanorc
-ADD config/nanorc /etc/nanorc
+ADD nanorc /etc/nanorc
 RUN mkdir /root/.nano
 
 # Create the /usr/bin/confcat file with heredocs
@@ -38,9 +35,18 @@ EOF
 # Make the e file executable
 RUN chmod +x /usr/bin/e
 
-# The sqlite insertion part
-ADD config/init.sql.db /init.sql.db
-ADD config/run.sh /run.sh
-RUN chmod +x /run.sh
-RUN /run.sh
+# Copy and run custom entrypoint scripts
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
+# Set the entrypoint
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Uptime Kuma working directory
+WORKDIR /app
+
+# The CMD line represent the Arguments that will be passed to the
+# entrypoint.sh. We'll use them to indicate the script what
+# command will be executed through our entrypoint when it finishes
+# Executing default's uptime kuma cmd
+CMD ["node", "server/server.js"]
