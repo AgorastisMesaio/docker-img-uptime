@@ -1,0 +1,2 @@
+
+INSERT INTO "setting" VALUES (14,'disableAuth','true','general');
