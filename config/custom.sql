@@ -1,3 +1,4 @@
+BEGIN TRANSACTION;
 -- Sample custom SQL file to insert into "First time deployment of the container"
 INSERT INTO "setting" VALUES (4,'initServerTimezone','true',NULL);
 INSERT INTO "setting" VALUES (5,'serverTimezone','"Europe/Athens"','general');
@@ -14,3 +15,4 @@ INSERT INTO "setting" VALUES (14,'disableAuth','true','general');
 -- kuma, super2024
 INSERT INTO "user" VALUES (1,'kuma','$2a$10$K3EiQ2lW4D4tioAWhrviSOv1Et8WgOx1Kcz3fJnIr00q1r06s7uK.',1,NULL,NULL,0,NULL);
 --
+COMMIT;
